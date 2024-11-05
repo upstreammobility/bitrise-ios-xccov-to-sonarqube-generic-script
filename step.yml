@@ -7,8 +7,8 @@ summary: A custom Bitrise step to convert Xcode coverage reports to SonarQube ge
 description: |
   This step takes an `.xcresult` file produced by Xcode and converts it to a SonarQube-compatible XML coverage report.
   It is intended to be used when integrating with SonarQube.
-website: https://github.com/yourusername/bitrise-xccov-to-sonarqube-step
-source_code_url: https://github.com/yourusername/bitrise-xccov-to-sonarqube-step
+website: https://github.com/upstreammobility/bitrise-ios-xccov-to-sonarqube-generic-script
+source_code_url: https://github.com/upstreammobility/bitrise-ios-xccov-to-sonarqube-generic-script
 
 # Inputs
 inputs:
