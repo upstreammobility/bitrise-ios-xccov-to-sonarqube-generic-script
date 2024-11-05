@@ -1,0 +1,46 @@
+format_version: '1.0.0'
+default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
+
+# Metadata of the step
+title: xccov to SonarQube Generic Step
+summary: A custom Bitrise step to convert Xcode coverage reports to SonarQube generic format.
+description: |
+  This step takes an `.xcresult` file produced by Xcode and converts it to a SonarQube-compatible XML coverage report.
+  It is intended to be used when integrating with SonarQube.
+website: https://github.com/yourusername/bitrise-xccov-to-sonarqube-step
+source_code_url: https://github.com/yourusername/bitrise-xccov-to-sonarqube-step
+
+# Inputs
+inputs:
+  - BITRISE_XCRESULT_PATH:
+      title: "Path to Xcode Result Bundle (.xcresult)"
+      description: |
+        The path to the `.xcresult` file to be processed.
+        Typically, this is produced by running unit tests.
+      required: true
+      type: string
+      default_value: "$BITRISE_XCRESULT_PATH"
+  - BITRISE_PROJECT_PATH:
+      title: "Project Root Path"
+      description: |
+        The root path of your project. This is where the SonarQube coverage XML will be generated.
+      required: true
+      type: string
+      default_value: "$BITRISE_SOURCE_DIR"
+
+# Script to run the step
+run:
+  # Run the custom script
+  bash: ./xccov_to_sonarqube_generic.sh
+
+# Dependencies
+host_os_tags:
+  - osx
+
+# Information about who maintains the step
+project_type_tags:
+  - ios
+type_tags:
+  - coverage
+  - sonar
+is_requires_admin_user: false
