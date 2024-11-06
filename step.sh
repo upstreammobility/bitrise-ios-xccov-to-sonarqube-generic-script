@@ -42,4 +42,12 @@ elif [[ $xcresult != *".xcresult"* ]]; then
   exit 1
 fi
 
-xccov_to_generic "$xcresult" > $BITRISE_PROJECT_PATH/sonarqube-generic-coverage.xml
+covpath=$COV_PATH
+# Check if the coverage path is provided
+if [[ -z "$covpath" ]]; then
+  echo "Error: covpath is not set or is empty." 1>&2
+  exit 1
+fi
+
+# write the conversion to the specified coverage path
+xccov_to_generic "$xcresult" > "$covpath"
