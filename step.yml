@@ -19,6 +19,3 @@ inputs:
       required: true
       type: string
       default_value: "$BITRISE_SOURCE_DIR"
-
-run:
-  bash: ./xccov_to_sonarqube_generic.sh
