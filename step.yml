@@ -13,9 +13,9 @@ inputs:
       required: true
       type: string
       default_value: "$BITRISE_XCRESULT_PATH"
-  - BITRISE_PROJECT_PATH:
+  - COV_PATH:
       title: "Project Root Path"
-      description: The root path of your project where the SonarQube coverage XML will be generated.
+      description: The path of your project where the SonarQube coverage XML will be generated.
       required: true
       type: string
-      default_value: "$BITRISE_SOURCE_DIR"
+      default_value: "$BITRISE_SOURCE_DIR/sonarqube-generic-coverage.xml"
