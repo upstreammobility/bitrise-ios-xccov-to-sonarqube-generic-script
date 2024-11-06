@@ -4,6 +4,13 @@ set -euo pipefail
 # Source of the script
 # https://github.com/SonarSource/sonar-scanning-examples/blob/master/swift-coverage/swift-coverage-example/xccov-to-sonarqube-generic.sh
 
+covpath=$COV_PATH
+# Check if the coverage path is provided
+if [[ -z "$covpath" ]]; then
+  echo "Error: covpath is not set or is empty." 1>&2
+  exit 1
+fi
+
 function convert_xccov_to_xml {
   sed -n                                                                                       \
       -e '/:$/s/&/\&amp;/g;s/^\(.*\):$/  <file path="\1">/p'                                   \
@@ -39,13 +46,6 @@ if [[ ! -d $xcresult ]]; then
   exit 1
 elif [[ $xcresult != *".xcresult"* ]]; then
   echo "Expecting input to match '*.xcresult', got: $xcresult" 1>&2
-  exit 1
-fi
-
-covpath=$COV_PATH
-# Check if the coverage path is provided
-if [[ -z "$covpath" ]]; then
-  echo "Error: covpath is not set or is empty." 1>&2
   exit 1
 fi
 
